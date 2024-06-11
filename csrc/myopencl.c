@@ -1,5 +1,4 @@
 #include "myopencl.h"
-#include <CL/cl.h>
 #include <stdarg.h>
 #include <stdio.h>
 
@@ -233,7 +232,7 @@ mycl_device mycl_gpu() {
 void mycl_print_device_info(mycl_device device) {
   char device_name[BUFFLEN];
   cl_uint err;
-  size_t max_compute_units;
+  cl_uint max_compute_units;
   size_t max_group_size;
 
   err = clGetDeviceInfo(device->id, CL_DEVICE_NAME, BUFFLEN, device_name, NULL);
@@ -258,7 +257,7 @@ void mycl_print_device_info(mycl_device device) {
 
   printf("Summary of device [%s]:\n", device_name);
   printf("-------------------------------------------\n");
-  printf("OpenCL units        : %zu\n", max_compute_units);
+  printf("OpenCL units        : %u\n", max_compute_units);
   printf("Max work group size : %zu\n", max_group_size);
 }
 
